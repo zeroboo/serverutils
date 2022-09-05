@@ -4,9 +4,9 @@ import (
 	"log"
 	"testing"
 	"time"
-	"zeroboo/serverutils/timeutils"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/zeroboo/serverutils/timeutils"
 )
 
 func TestGetTimeBeginOfDay_CurrentTime_CorrectValue(t *testing.T) {
