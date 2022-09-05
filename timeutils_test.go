@@ -6,13 +6,12 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/zeroboo/serverutils/timeutils"
 )
 
 func TestGetTimeBeginOfDay_CurrentTime_CorrectValue(t *testing.T) {
 	log.Println("TestGetTimeBeginOfDay_CurrentTime_CorrectValue")
 	currentTime := time.Now()
-	bod := timeutils.GetTimeBeginOfDay(currentTime)
+	bod := GetTimeBeginOfDay(currentTime)
 	log.Printf("BeginOfDay of %v is %v", currentTime, bod)
 
 	assert.Equal(t, 0, bod.Hour(), "BOD: 0 hour")
@@ -32,7 +31,7 @@ func TestGetTimeBeginOfDay_PresetDate_CorrectValue(t *testing.T) {
 	assert.Equal(t, nil, errTestTime, "No parsing error")
 	assert.Equal(t, nil, errBODTime, "No parsing error")
 
-	bod := timeutils.GetTimeBeginOfDay(testTime)
+	bod := GetTimeBeginOfDay(testTime)
 	log.Printf("BeginOfDay of %v is %v", testTime, bodTime)
 
 	assert.Equal(t, bod, bodTime, "Expected bod")
@@ -44,7 +43,7 @@ func TestGetSecondsSinceBeginOfDay_PresetDate_CorrectValue(t *testing.T) {
 
 	testTime, errTestTime := time.Parse(TestTimeLayout, "1945-09-02T04:30:19.750")
 	log.Printf("Prepare test done, errTestTime=%v", errTestTime)
-	secondsSinceBOD := timeutils.GetSecondsSinceBeginOfDay(testTime)
+	secondsSinceBOD := GetSecondsSinceBeginOfDay(testTime)
 	log.Printf("Seconds since begin of day of `%v` is %v", testTime, secondsSinceBOD)
 
 	assert.Equal(t, int64(16219), secondsSinceBOD, "Expected seconds")
