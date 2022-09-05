@@ -1,2 +1,3 @@
-# go-serverutils
-Common tools to manage backend service &amp; users
+# serverutils
+
+Common golang helper to manage backend service &amp; users
