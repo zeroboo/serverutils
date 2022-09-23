@@ -3,7 +3,7 @@ package serverutils
 import "time"
 
 const TIME_FORMAT_CLIENT string = "2006-01-02 03:04:05"
-const TIME_FORMAT_LOG_FILE string = "2006-01-02_030405"
+const TIME_FORMAT_LOG_FILE string = "20060102_030405"
 const TIME_FORMAT_DATE string = "2006-01-02"
 
 type timeUtil struct {
@@ -50,7 +50,7 @@ func (*timeUtil) FormatTimeLogTime(from time.Time) string {
 }
 
 /*
-Return formatted time for log file, YYYY-MM-DD_hhmmss
+Return formatted time for log file, YYYYMMDD_hhmmss
 */
 func (*timeUtil) FormatTimeLogFile(from time.Time) string {
 	return from.Format(TIME_FORMAT_LOG_FILE)

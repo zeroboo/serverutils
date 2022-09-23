@@ -2,6 +2,7 @@ package serverutils
 
 import (
 	"log"
+	"os"
 	"testing"
 	"time"
 
@@ -66,7 +67,7 @@ func TestGetDate_CorrectValue(t *testing.T) {
 	formattedTime := Time.GetDate(testTime)
 
 	//formatted
-	assert.Equal(t, "19450902", formattedTime, "Correct value")
+	assert.Equal(t, "1945-09-02", formattedTime, "Correct formatted date")
 }
 
 // go test -timeout 30s -run ^TestFormatLogTime$ github.com/zeroboo/serverutils
@@ -75,4 +76,19 @@ func TestRandomString_CorrectSize(t *testing.T) {
 
 	assert.Equal(t, 4, len(Random.GetRandomString(4)), "Correct size")
 	assert.Equal(t, 16, len(Random.GetRandomString(16)), "Correct size")
+}
+
+// go test -timeout 30s -run ^TestGetIntegerEnvOrDefault_CorrectValue$ github.com/zeroboo/serverutils
+func TestGetIntegerEnvOrDefault_CorrectValue(t *testing.T) {
+	log.Println("TestGetIntegerEnvOrDefault_CorrectValue")
+	key := "TEST_VALUE"
+
+	os.Setenv(key, "10")
+	value, _ := GetIntegerEnvOrDefault(key, 9)
+	assert.Equal(t, int64(10), value, "Correct result for valid number")
+
+	os.Setenv(key, "10-")
+	value, _ = GetIntegerEnvOrDefault(key, 9)
+	assert.Equal(t, int64(9), value, "Default result for invalid number")
+
 }
