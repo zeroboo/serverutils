@@ -62,7 +62,7 @@ func TestFormatLogTime(t *testing.T) {
 // go test -timeout 30s -run ^TestFormatLogTime$ github.com/zeroboo/serverutils
 func TestRandomString_CorrectSize(t *testing.T) {
 	log.Println("TestRandomString_CorrectSize")
-	assert.Equal(t, 4, len(Random.GetRandomString(4)), "Correct size")
 
+	assert.Equal(t, 4, len(Random.GetRandomString(4)), "Correct size")
 	assert.Equal(t, 16, len(Random.GetRandomString(16)), "Correct size")
 }
