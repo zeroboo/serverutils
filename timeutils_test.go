@@ -49,8 +49,8 @@ func TestGetSecondsSinceBeginOfDay_PresetDate_CorrectValue(t *testing.T) {
 	assert.Equal(t, int64(16219), secondsSinceBOD, "Expected seconds")
 }
 
-func TestFormatLogTime(t *testing.T) {
-	log.Println("TestFormatLogTime")
+func TestFormatLogTime_CorrectValue(t *testing.T) {
+	log.Println("TestFormatLogTime_CorrectValue")
 	testTime, _ := time.Parse(TestTimeLayout, "1945-09-02T04:30:19.750")
 
 	formattedTime := Time.FormatTimeLogFile(testTime)
@@ -58,14 +58,15 @@ func TestFormatLogTime(t *testing.T) {
 	//formatted
 	assert.Equal(t, "19450902_043019", formattedTime, "Correct value")
 }
-func TestFormatLogTime(t *testing.T) {
-	log.Println("TestFormatLogTime")
+
+func TestGetDate_CorrectValue(t *testing.T) {
+	log.Println("TestGetDate_CorrectValue")
 	testTime, _ := time.Parse(TestTimeLayout, "1945-09-02T04:30:19.750")
 
 	formattedTime := Time.GetDate(testTime)
 
 	//formatted
-	assert.Equal(t, "19450902_043019", formattedTime, "Correct value")
+	assert.Equal(t, "19450902", formattedTime, "Correct value")
 }
 
 // go test -timeout 30s -run ^TestFormatLogTime$ github.com/zeroboo/serverutils
