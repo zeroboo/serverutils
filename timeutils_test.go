@@ -58,6 +58,15 @@ func TestFormatLogTime(t *testing.T) {
 	//formatted
 	assert.Equal(t, "19450902_043019", formattedTime, "Correct value")
 }
+func TestFormatLogTime(t *testing.T) {
+	log.Println("TestFormatLogTime")
+	testTime, _ := time.Parse(TestTimeLayout, "1945-09-02T04:30:19.750")
+
+	formattedTime := Time.GetDate(testTime)
+
+	//formatted
+	assert.Equal(t, "19450902_043019", formattedTime, "Correct value")
+}
 
 // go test -timeout 30s -run ^TestFormatLogTime$ github.com/zeroboo/serverutils
 func TestRandomString_CorrectSize(t *testing.T) {

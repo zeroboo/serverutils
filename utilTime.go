@@ -50,7 +50,7 @@ func (*timeUtil) FormatTimeLogTime(from time.Time) string {
 }
 
 /*
-Return formatted time for log file, only has digits and _
+Return formatted time for log file, YYYY-MM-DD_hhmmss
 */
 func (*timeUtil) FormatTimeLogFile(from time.Time) string {
 	return from.Format(TIME_FORMAT_LOG_FILE)
@@ -59,6 +59,6 @@ func (*timeUtil) FormatTimeLogFile(from time.Time) string {
 /*
 Return formatted date as YYYY-MM-DD
 */
-func (*timeUtil) FormatTimeDate(from time.Time) string {
+func (*timeUtil) GetDate(from time.Time) string {
 	return from.Format(TIME_FORMAT_DATE)
 }
