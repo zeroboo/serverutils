@@ -1,6 +1,6 @@
 # go-serverutils
 Common tools to manage backend service &amp; users
-
+Current release: v0.2.6
 ## 
 
 1. Build
