@@ -1,13 +1,13 @@
 # go-serverutils
 Common tools to manage backend service &amp; users
-Current release: v0.2.6
+Current release: v0.3.0
 ## 
 
 1. Build
 2. Test
 3. Publish:
-    Windows: eg, publish v0.2.0
+    Windows: eg, publish v0.3.0
 ```shell
 SET GOPROXY=proxy.golang.org 
-go list -m github.com/zeroboo/serverutils@v0.2.2
+go list -m github.com/zeroboo/serverutils@v0.3.0
 ```
