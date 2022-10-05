@@ -78,7 +78,7 @@ func TestRandomString_CorrectSize(t *testing.T) {
 	assert.Equal(t, 16, len(Random.GetRandomString(16)), "Correct size")
 }
 
-// go test -timeout 30s -run ^TestGetIntegerEnvOrDefault_CorrectValue$ github.com/zeroboo/serverutils
+// go test -timeout 30s -run ^TestGetIntegerEnvOrDefault_CorrectValue$ github.com/zeroboo/serverutils -v
 func TestGetIntegerEnvOrDefault_CorrectValue(t *testing.T) {
 	log.Println("TestGetIntegerEnvOrDefault_CorrectValue")
 	key := "TEST_VALUE"
@@ -90,5 +90,17 @@ func TestGetIntegerEnvOrDefault_CorrectValue(t *testing.T) {
 	os.Setenv(key, "10-")
 	value, _ = GetIntegerEnvOrDefault(key, 9)
 	assert.Equal(t, int64(9), value, "Default result for invalid number")
+
+}
+
+// go test -timeout 30s -run ^TestGetHashes_Correct$ github.com/zeroboo/serverutils -v
+func TestGetHashes_Correct(t *testing.T) {
+	text := "The quick brown fox jumps over the lazy dog"
+	md5Hash := Hash.CreateMD5Hash([]byte(text))
+	sha1Hash := Hash.CreateSHA1Hash([]byte(text))
+	sha256Hash := Hash.CreateSHA256Hash([]byte(text))
+	assert.Equal(t, "9e107d9d372bb6826bd81d3542a419d6", md5Hash, "Correct md5")
+	assert.Equal(t, "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", sha1Hash, "Correct sha1")
+	assert.Equal(t, "d7a8fbb307d7809469ca9abcb0082e4f8d5651e46d3cdb762d02d0bf37c9e592", sha256Hash, "Correct sha256")
 
 }

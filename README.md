@@ -9,5 +9,5 @@ Current release: v0.2.6
     Windows: eg, publish v0.2.0
 ```shell
 SET GOPROXY=proxy.golang.org 
-go list -m github.com/zeroboo/serverutils@v0.2.0
+go list -m github.com/zeroboo/serverutils@v0.2.2
 ```
