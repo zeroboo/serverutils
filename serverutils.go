@@ -12,6 +12,7 @@ import (
 
 var Time timeUtil
 var Random randomUtil
+var Hash hashUtil
 
 // Return environment value or default value if not exists
 func GetEnvOrDefault(key string, defaultValue string) string {
