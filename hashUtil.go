@@ -14,14 +14,21 @@ import (
 type hashUtil struct {
 }
 
-func (*hashUtil) CreateSHA256Hash(data []byte) string {
+func (*hashUtil) CreateSHA256HashHex(data []byte) string {
 	hasher := sha256.New()
 	hasher.Write(data)
 	sha256 := hex.EncodeToString(hasher.Sum(nil))
 	return sha256
 }
 
-func (*hashUtil) CreateSHA1Hash(data []byte) string {
+func (*hashUtil) CreateSHA256HashBase64(data []byte) string {
+	hasher := sha256.New()
+	hasher.Write(data)
+	sha256 := base64.RawStdEncoding.EncodeToString(hasher.Sum(nil))
+	return sha256
+}
+
+func (*hashUtil) CreateSHA1HashHex(data []byte) string {
 	hasher := sha1.New()
 	hasher.Write(data)
 	//sha := base64.StdEncoding.EncodeToString(hasher.Sum(nil))
@@ -30,6 +37,13 @@ func (*hashUtil) CreateSHA1Hash(data []byte) string {
 	return sha
 }
 
+func (*hashUtil) CreateSHA1HashBase64(data []byte) string {
+	hasher := sha1.New()
+	hasher.Write(data)
+	//sha := base64.StdEncoding.EncodeToString(hasher.Sum(nil))
+	sha := base64.RawStdEncoding.EncodeToString(hasher.Sum(nil))
+	return sha
+}
 func (*hashUtil) CreateMD5Hash(data []byte) string {
 	hasher := md5.New()
 	hasher.Write(data)

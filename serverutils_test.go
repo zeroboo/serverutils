@@ -40,7 +40,6 @@ func TestGetTimeBeginOfDay_PresetDate_CorrectValue(t *testing.T) {
 
 func TestGetSecondsSinceBeginOfDay_PresetDate_CorrectValue(t *testing.T) {
 	log.Println("TestGetTimeBeginOfDay_CorrectValue")
-	log.Println("TestGetTimeBeginOfDay_CorrectValue")
 
 	testTime, errTestTime := time.Parse(TestTimeLayout, "1945-09-02T04:30:19.750")
 	log.Printf("Prepare test done, errTestTime=%v", errTestTime)
@@ -97,10 +96,14 @@ func TestGetIntegerEnvOrDefault_CorrectValue(t *testing.T) {
 func TestGetHashes_Correct(t *testing.T) {
 	text := "The quick brown fox jumps over the lazy dog"
 	md5Hash := Hash.CreateMD5Hash([]byte(text))
-	sha1Hash := Hash.CreateSHA1Hash([]byte(text))
-	sha256Hash := Hash.CreateSHA256Hash([]byte(text))
+	sha1Hash := Hash.CreateSHA1HashHex([]byte(text))
+	sha256Hash := Hash.CreateSHA256HashHex([]byte(text))
 	assert.Equal(t, "9e107d9d372bb6826bd81d3542a419d6", md5Hash, "Correct md5")
-	assert.Equal(t, "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", sha1Hash, "Correct sha1")
-	assert.Equal(t, "d7a8fbb307d7809469ca9abcb0082e4f8d5651e46d3cdb762d02d0bf37c9e592", sha256Hash, "Correct sha256")
+
+	assert.Equal(t, "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", sha1Hash, "Correct sha1 in hex form")
+	assert.Equal(t, "d7a8fbb307d7809469ca9abcb0082e4f8d5651e46d3cdb762d02d0bf37c9e592", sha256Hash, "Correct sha256 in hex form")
+
+	assert.Equal(t, "L9ThxnotKPzthJ7hu3bnORuT6xI", Hash.CreateSHA1HashBase64([]byte(text)), "Correct sha1 in base64 form")
+	assert.Equal(t, "16j7swfXgJRpypq8sAguT41WUeRtPNt2LQLQvzfJ5ZI", Hash.CreateSHA256HashBase64([]byte(text)), "Correct sha256 in base64 form")
 
 }
