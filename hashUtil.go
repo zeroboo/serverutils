@@ -54,7 +54,7 @@ func (*hashUtil) CreateHMAC_SHA256(message string, key string) string {
 	mac := hmac.New(sha256.New, []byte(key))
 	mac.Write([]byte(message))
 	expectedMAC := mac.Sum(nil)
-	return base64.StdEncoding.EncodeToString(expectedMAC)
+	return base64.RawStdEncoding.EncodeToString(expectedMAC)
 }
 
 func (*hashUtil) CreateScrypt(password string, salt string) (string, error) {
