@@ -24,7 +24,7 @@ func (*hashUtil) CreateSHA256HashHex(data []byte) string {
 func (*hashUtil) CreateSHA256HashBase64(data []byte) string {
 	hasher := sha256.New()
 	hasher.Write(data)
-	sha256 := base64.RawStdEncoding.EncodeToString(hasher.Sum(nil))
+	sha256 := base64.StdEncoding.EncodeToString(hasher.Sum(nil))
 	return sha256
 }
 
@@ -41,7 +41,7 @@ func (*hashUtil) CreateSHA1HashBase64(data []byte) string {
 	hasher := sha1.New()
 	hasher.Write(data)
 	//sha := base64.StdEncoding.EncodeToString(hasher.Sum(nil))
-	sha := base64.RawStdEncoding.EncodeToString(hasher.Sum(nil))
+	sha := base64.StdEncoding.EncodeToString(hasher.Sum(nil))
 	return sha
 }
 func (*hashUtil) CreateMD5Hash(data []byte) string {
@@ -54,7 +54,7 @@ func (*hashUtil) CreateHMAC_SHA256(message string, key string) string {
 	mac := hmac.New(sha256.New, []byte(key))
 	mac.Write([]byte(message))
 	expectedMAC := mac.Sum(nil)
-	return base64.RawStdEncoding.EncodeToString(expectedMAC)
+	return base64.StdEncoding.EncodeToString(expectedMAC)
 }
 
 func (*hashUtil) CreateScrypt(password string, salt string) (string, error) {
