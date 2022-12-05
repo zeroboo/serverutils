@@ -1,6 +1,6 @@
 # go-serverutils
 Common tools to manage backend service &amp; users
-Current release: v0.3.1
+Current release: v0.4.1
 ## 
 
 1. Build
@@ -11,9 +11,15 @@ go test -timeout 300s github.com/zeroboo/serverutils -v
 ```
 
 3. Publish:
-    Windows: eg, publish v0.3.3
+Example with VERSION=v0.4.1
+  - Tag on git
 
 ```console
+git tag $VERSION
+git push origin $VERSION
+```
+  - Publish go 
+```console
 SET GOPROXY=proxy.golang.org 
-go list -m github.com/zeroboo/serverutils@v0.3.5
+go list -m github.com/zeroboo/serverutils@$VERSION
 ```

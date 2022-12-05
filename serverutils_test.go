@@ -77,6 +77,21 @@ func TestRandomString_CorrectSize(t *testing.T) {
 	assert.Equal(t, 16, len(Random.GetRandomString(16)), "Correct size")
 }
 
+// go test -timeout 30s -run ^TestGetRandomNumbers_Correct$ github.com/zeroboo/serverutils -v
+func TestGetRandomNumbers_Correct(t *testing.T) {
+	log.Println("TestGetRandomNumbers_Correct")
+
+	assert.Equal(t, 4, len(Random.GetRandomString(4)), "Correct size")
+	assert.Equal(t, 16, len(Random.GetRandomString(16)), "Correct size")
+
+	value := Random.GetRandomNumbers(32)
+	for _, character := range value {
+		isChar := character >= '0' && character <= '9'
+		assert.Equal(t, true, isChar, "Digit characters")
+	}
+	log.Printf("value %v", value)
+}
+
 // go test -timeout 30s -run ^TestGetIntegerEnvOrDefault_CorrectValue$ github.com/zeroboo/serverutils -v
 func TestGetIntegerEnvOrDefault_CorrectValue(t *testing.T) {
 	log.Println("TestGetIntegerEnvOrDefault_CorrectValue")
@@ -103,7 +118,7 @@ func TestGetHashes_Correct(t *testing.T) {
 	assert.Equal(t, "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12", sha1Hash, "Correct sha1 in hex form")
 	assert.Equal(t, "d7a8fbb307d7809469ca9abcb0082e4f8d5651e46d3cdb762d02d0bf37c9e592", sha256Hash, "Correct sha256 in hex form")
 
-	assert.Equal(t, "L9ThxnotKPzthJ7hu3bnORuT6xI", Hash.CreateSHA1HashBase64([]byte(text)), "Correct sha1 in base64 form")
-	assert.Equal(t, "16j7swfXgJRpypq8sAguT41WUeRtPNt2LQLQvzfJ5ZI", Hash.CreateSHA256HashBase64([]byte(text)), "Correct sha256 in base64 form")
+	assert.Equal(t, "L9ThxnotKPzthJ7hu3bnORuT6xI=", Hash.CreateSHA1HashBase64([]byte(text)), "Correct sha1 in base64 form")
+	assert.Equal(t, "16j7swfXgJRpypq8sAguT41WUeRtPNt2LQLQvzfJ5ZI=", Hash.CreateSHA256HashBase64([]byte(text)), "Correct sha256 in base64 form")
 
 }
