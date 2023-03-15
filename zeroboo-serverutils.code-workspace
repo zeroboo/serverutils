@@ -4,7 +4,10 @@
 			"path": "."
 		},
 		{
-			"path": "../random-selector"
+			"path": "../gin-request-limitter"
+		},
+		{
+			"path": "../regen-resource"
 		}
 	],
 	"settings": {}
