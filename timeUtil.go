@@ -5,6 +5,7 @@ import "time"
 const TIME_FORMAT_CLIENT string = "2006-01-02 03:04:05"
 const TIME_FORMAT_LOG_FILE string = "20060102_030405"
 const TIME_FORMAT_DATE string = "2006-01-02"
+const TIME_FORMAT_TIME string = "030405"
 
 type timeUtil struct {
 }
@@ -61,4 +62,11 @@ Return formatted date as YYYY-MM-DD
 */
 func (*timeUtil) GetDate(from time.Time) string {
 	return from.Format(TIME_FORMAT_DATE)
+}
+
+/*
+Return formatted date as YYYY-MM-DD
+*/
+func (*timeUtil) GetTime(from time.Time) string {
+	return from.Format(TIME_FORMAT_TIME)
 }
